@@ -12,6 +12,6 @@ public class Driver {
     String name;
     String surname;
     char license;
-    
+
 
 }
