@@ -8,10 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainPanelController {
 
     private static final String MAIN_PANEL = "main-panel";
+    private static final String CRUD_VEHICLE = "pages/crud-vehicle";
 
     @GetMapping("/")
     public String getMainPanel(){
         return MAIN_PANEL;
+    }
+
+    @GetMapping("/crud-vehicle")
+    public String getCrudVehicle(){
+        return CRUD_VEHICLE;
     }
 
 }
