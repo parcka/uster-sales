@@ -4,9 +4,10 @@ $(document).ready(function () {
         event.preventDefault();
         var href = $(this).attr('href');
         var text = $(this).text(); //return New or Edit
-
+        var idText =  $('.myForm #id').text();
         if (text === 'Edit') {
             $.get(href, function (vehicle, status) {
+                $('.myForm #id').text(idText+vehicle.id);
                 $('.myForm #brand').val(vehicle.brand);
                 $('.myForm #model').val(vehicle.model);
                 $('.myForm #plate').val(vehicle.plate);
