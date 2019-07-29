@@ -62,7 +62,7 @@ public class VehicleController {
     private Vehicle createTestVehicle() {
         return Vehicle.builder()
                 .brand("ISUZU")
-                .LicenseRequired("3")
+                .licenseRequired('3')
                 .model("TROOPER")
                 .plate("A256IL")
                 .build();

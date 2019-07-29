@@ -22,7 +22,7 @@
             <div>
 
 
-                <button class="btn btn-success nBtn m-4">Create New Driver</button>
+                <button class="btn btn-success nBtnDriver m-4">Create New Driver</button>
                 <div class="card">
                     <div class="card-block">
                         <table class="table table-hover">
@@ -40,14 +40,13 @@
 
                                 <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
                                 <td th:text="${driver.name}"></td>
-                                <td th:text="${driver.surName}"></td>
+                                <td th:text="${driver.surname}"></td>
                                 <td th:text="${driver.license}"></td>
                                 <td>
-
-
-
-                                    <a class="btn btn-danger delBtn" th:method="delete" th:href="@{delete/(id=${driver.id})}">Delete</a>
-                                    <a class="btn btn-primary eBtn" th:href="@{findOne/(id=${driver.id})}">Edit</a>
+                                    <a class="btn btn-danger delBtn" th:method="delete"
+                                       th:href="@{/drivers/delete/(id=${driver.id})}">Delete</a>
+                                    <a class="btn btn-primary eBtnDriver"
+                                       th:href="@{/drivers/findOne/(id=${driver.id})}">Edit</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -73,18 +72,18 @@
 </div>
 
 
-<!--Lista de vehiculos-->
+<!--Lista de drivers-->
 
 <div class="container">
 
 
-    <!--Fin Lista de vehiculos-->
+    <!--Fin Lista de drivers-->
 
 
     <!--Formulario Salvar / Editar-->
 
     <div class="myForm">
-        <form action="#" method="post" th:action="@{/saveDriver}" th:object="${driver}">
+        <form action="#" method="post" th:action="@{/drivers/saveDriver}" th:object="${driver}">
             <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
                  id="exampleModal" role="dialog"
                  tabindex="-1">
@@ -100,25 +99,23 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="col-form-label">ID:  </label><label  id="idLabel"> No ID </label>
+                                <label class="col-form-label">ID: </label><label id="idLabel"> No ID </label>
                                 <input hidden class="form-control" id="id" name="id" type="text" value=""/>
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="brand">Brand:</label>
-                                <input class="form-control" id="brand" name="brand" type="text" value=""/>
+                                <label class="col-form-label" for="name">Name:</label>
+                                <input class="form-control" id="name" name="name" type="text" value=""/>
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="model">Model:</label>
-                                <input class="form-control" id="model" name="model" type="text" value=""/>
+                                <label class="col-form-label" for="surname">SurName:</label>
+                                <input class="form-control" id="surname" name="surname" type="text" value=""/>
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="plate">Plate:</label>
-                                <input class="form-control" id="plate" name="plate" type="text" value=""/>
+                                <label class="col-form-label" for="license">License:</label>
+                                <input placeholder="License class obtained"
+                                        maxlength="1" class="form-control" id="license" name="license" type="text" value=""/>
                             </div>
-                            <div class="form-group">
-                                <label class="col-form-label" for="licenseRequired">LicenseRequired:</label>
-                                <input class="form-control" maxlength="1" id="licenseRequired" name="licenseRequired" type="text" value=""/>
-                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-dismiss="modal"

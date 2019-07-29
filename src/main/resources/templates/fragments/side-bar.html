@@ -12,7 +12,7 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="index.html">
-                <img th:src="@{img/spring-icon.png}" class="navbar-brand-img
+                <img th:src="@{../img/spring-icon.png}" class="navbar-brand-img
               mx-auto" alt="...">
             </a>
 
@@ -33,7 +33,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#sidebarPages" role="button">
+                    <a class="nav-link"  th:href="@{/drivers/listDriver}" href="#sidebarPages" role="button">
                         <i class="fas fa-user-cog"></i> CRUD Drivers
                     </a>
 
