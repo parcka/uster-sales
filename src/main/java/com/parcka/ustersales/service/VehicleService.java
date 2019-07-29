@@ -32,4 +32,8 @@ public class VehicleService {
         vehicleRepository.delete(vehicle);
     }
 
+    public void deleteById(long id) {
+        vehicleRepository.deleteById(id);
+    }
+
 }
