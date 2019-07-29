@@ -1,0 +1,1 @@
+[build]  base    = ""  publish = "target/site"  command = "./mvnw clean site"
