@@ -12,7 +12,7 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="index.html">
-                <img th:src="@{img/spring-icon.png}" class="navbar-brand-img
+                <img th:src="@{../img/spring-icon.png}" class="navbar-brand-img
               mx-auto" alt="...">
             </a>
 
@@ -26,14 +26,14 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-center" th:href="@{/listVehicle}" href="#sidebarDashboards" role="button">
+                    <a class="nav-link text-center" th:href="@{/vehicles/listVehicle}" href="#sidebarDashboards" role="button">
 
                         <i class="fas fa-car"></i> <span>CRUD Vehicles</span>
                     </a>
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#sidebarPages" role="button">
+                    <a class="nav-link"  th:href="@{/drivers/listDriver}" href="#sidebarPages" role="button">
                         <i class="fas fa-user-cog"></i> CRUD Drivers
                     </a>
 

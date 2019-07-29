@@ -6,14 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
-//@RequestMapping("/vehicle")
+@RequestMapping("/vehicles")
 public class VehicleController {
 
 
@@ -21,7 +18,7 @@ public class VehicleController {
     VehicleService vehicleService;
 
     private static final String LIST_VEHICLE = "pages/listVehicle";
-    private static final String REDIRECT_LIST_VEHICLE = "redirect:/listVehicle";
+    private static final String REDIRECT_LIST_VEHICLE = "redirect:/vehicles/listVehicle";
 
 
     @GetMapping("/listVehicle")
@@ -32,6 +29,7 @@ public class VehicleController {
     }
 
     @PostMapping("/saveVehicle")
+//    @ModelAttribute(value = "vehicle")
     public String saveVehicle(Vehicle vehicle) {
         log.info("Saving vehicle: {}", vehicle);
         vehicleService.save(vehicle);
@@ -54,6 +52,7 @@ public class VehicleController {
         return vehicleService.findByID(id).get();
     }
 
+
     public String update(Vehicle vehicle) {
         log.info("Updating vehicle: {}", vehicle);
         vehicleService.save(vehicle);
@@ -63,7 +62,7 @@ public class VehicleController {
     private Vehicle createTestVehicle() {
         return Vehicle.builder()
                 .brand("ISUZU")
-                .LicenseRequired("3")
+                .licenseRequired('3')
                 .model("TROOPER")
                 .plate("A256IL")
                 .build();

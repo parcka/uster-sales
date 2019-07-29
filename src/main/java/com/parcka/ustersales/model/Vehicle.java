@@ -22,6 +22,6 @@ public class Vehicle {
     String brand;
     String model;
     String plate;
-    String LicenseRequired;
+    char licenseRequired;
 
 }
