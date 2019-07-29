@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
-//@RequestMapping("/vehicle")
+@RequestMapping("/vehicles")
 public class VehicleController {
 
 
@@ -18,7 +18,7 @@ public class VehicleController {
     VehicleService vehicleService;
 
     private static final String LIST_VEHICLE = "pages/listVehicle";
-    private static final String REDIRECT_LIST_VEHICLE = "redirect:/listVehicle";
+    private static final String REDIRECT_LIST_VEHICLE = "redirect:/vehicles/listVehicle";
 
 
     @GetMapping("/listVehicle")

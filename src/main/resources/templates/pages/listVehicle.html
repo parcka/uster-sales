@@ -46,8 +46,8 @@
 
 
 
-                                    <a class="btn btn-danger delBtn" th:method="delete" th:href="@{delete/(id=${vehicle.id})}">Delete</a>
-                                    <a class="btn btn-primary eBtn" th:href="@{findOne/(id=${vehicle.id})}">Edit</a>
+                                    <a class="btn btn-danger delBtn" th:method="delete" th:href="@{/vehicles/delete/(id=${vehicle.id})}">Delete</a>
+                                    <a class="btn btn-primary eBtn" th:href="@{/vehicles/findOne/(id=${vehicle.id})}">Edit</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -84,7 +84,7 @@
     <!--Formulario Salvar / Editar-->
 
     <div class="myForm">
-        <form action="#" method="post" th:action="@{/saveVehicle}" th:object="${vehicle}">
+        <form action="#" method="post" th:action="@{/vehicles/saveVehicle}" th:object="${vehicle}">
             <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
                  id="exampleModal" role="dialog"
                  tabindex="-1">
