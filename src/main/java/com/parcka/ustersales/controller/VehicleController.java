@@ -6,7 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @Slf4j
@@ -35,22 +38,23 @@ public class VehicleController {
         return REDIRECT_LIST_VEHICLE;
     }
 
-    public String delete(Vehicle vehicle){
-        log.info("Deleting vehicle: {}", vehicle);
-        vehicleService.delete(vehicle);
+    @GetMapping("/delete")
+    public String delete(long id) {
+        log.info("Deleting vehicle ID: {}", id);
+        vehicleService.deleteById(id);
         return REDIRECT_LIST_VEHICLE;
     }
 
 
     @GetMapping("/findOne")
     @ResponseBody
-    public Vehicle findOne(long id){
+    public Vehicle findOne(long id) {
         log.info("Getting vehicle ID: {}", id);
 
         return vehicleService.findByID(id).get();
     }
 
-    public String update(Vehicle vehicle){
+    public String update(Vehicle vehicle) {
         log.info("Updating vehicle: {}", vehicle);
         vehicleService.save(vehicle);
         return REDIRECT_LIST_VEHICLE;
