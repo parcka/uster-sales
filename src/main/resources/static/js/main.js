@@ -5,9 +5,12 @@ $(document).ready(function () {
         var href = $(this).attr('href');
         var text = $(this).text(); //return New or Edit
         var idText =  $('.myForm #id').text();
+        console.log(text);
+        console.log(text === 'Edit');
         if (text === 'Edit') {
             $.get(href, function (vehicle, status) {
-                $('.myForm #id').text(idText+vehicle.id);
+                $('.myForm #idLabel').text(vehicle.id);
+                $('.myForm #id').val(vehicle.id);
                 $('.myForm #brand').val(vehicle.brand);
                 $('.myForm #model').val(vehicle.model);
                 $('.myForm #plate').val(vehicle.plate);
@@ -15,6 +18,8 @@ $(document).ready(function () {
             });
             $('.myForm #exampleModal').modal();
         } else {
+            $('.myForm #idLabel').text('');
+            $('.myForm #id').text('');
             $('.myForm #brand').val('');
             $('.myForm #model').val('');
             $('.myForm #plate').val('');
