@@ -9,65 +9,68 @@
 <div class="myStatic">
 
     <div class="row">
-        <div class="col-2">
+        <div class="col-md-3">
+            <!--<div class="col-3 col-sm-1 col-md-3 col-lg-3">-->
             <div th:replace="fragments/side-bar :: side-bar"></div>
         </div>
 
-        <div class="col-10">
-            <!--<div th:replace="fragments/navbar :: navbar"></div>-->
+        <div class="col-md-9">
+            <div class="container-fluid">
+                <!--<div th:replace="fragments/navbar :: navbar"></div>-->
 
 
-            <!--List-->
+                <!--List-->
 
-            <div>
-
-
-                <button class="btn btn-success nBtn m-4">Create New Vehicle</button>
-                <div class="card">
-                    <div class="card-block">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>Brand</th>
-                                <th>Model</th>
-                                <th>Plate</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            <tr th:each="vehicle : ${dataVehicle}">
+                <div>
 
 
-                                <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
-                                <td th:text="${vehicle.brand}"></td>
-                                <td th:text="${vehicle.model}"></td>
-                                <td th:text="${vehicle.plate}"></td>
-                                <td>
+                    <button class="btn btn-success nBtn m-4">Create New Vehicle</button>
+                    <div class="card">
+                        <div class="card-block">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Model</th>
+                                    <th>Plate</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="vehicle : ${dataVehicle}">
 
 
+                                    <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
+                                    <td th:text="${vehicle.brand}"></td>
+                                    <td th:text="${vehicle.model}"></td>
+                                    <td th:text="${vehicle.plate}"></td>
+                                    <td>
 
-                                    <a class="btn btn-danger delBtn" th:method="delete" th:href="@{/vehicles/delete/(id=${vehicle.id})}">Delete</a>
-                                    <a class="btn btn-primary eBtn" th:href="@{/vehicles/findOne/(id=${vehicle.id})}">Edit</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <hr/>
-                        <!--<ul class="nav nav-pills">-->
-                        <!--<li class="nav-item"-->
-                        <!--th:each="i : ${#numbers.sequence(0,data.totalPages-1)}"><a-->
-                        <!--class="nav-link" th:classappend="${currentPage}==${i}?'active':''" th:href="@{/(page=${i})}"-->
-                        <!--th:text="${i}"></a></li>-->
-                        <!--</ul>-->
+
+                                        <a class="btn btn-danger delBtn" th:method="delete"
+                                           th:href="@{/vehicles/delete/(id=${vehicle.id})}">Delete</a>
+                                        <a class="btn btn-primary eBtn"
+                                           th:href="@{/vehicles/findOne/(id=${vehicle.id})}">Edit</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <hr/>
+                            <!--<ul class="nav nav-pills">-->
+                            <!--<li class="nav-item"-->
+                            <!--th:each="i : ${#numbers.sequence(0,data.totalPages-1)}"><a-->
+                            <!--class="nav-link" th:classappend="${currentPage}==${i}?'active':''" th:href="@{/(page=${i})}"-->
+                            <!--th:text="${i}"></a></li>-->
+                            <!--</ul>-->
+                        </div>
                     </div>
+
+
                 </div>
 
+                <!--List-->
 
             </div>
-
-            <!--List-->
-
-
         </div>
     </div>
 </div>
@@ -100,7 +103,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="col-form-label">ID:  </label><label  id="idLabel"> No ID </label>
+                                <label class="col-form-label">ID: </label><label id="idLabel"> No ID </label>
                                 <input hidden class="form-control" id="id" name="id" type="text" value=""/>
                             </div>
                             <div class="form-group">
@@ -118,7 +121,8 @@
                             <div class="form-group">
                                 <label class="col-form-label" for="licenseRequired">License Required:</label>
                                 <input placeholder="License class required"
-                                        class="form-control" maxlength="1" id="licenseRequired" name="licenseRequired" type="text" value=""/>
+                                       class="form-control" maxlength="1" id="licenseRequired" name="licenseRequired"
+                                       type="text" value=""/>
                             </div>
                         </div>
                         <div class="modal-footer">
