@@ -62,7 +62,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-4">
                 <li class="nav-item">
-                    <a class="nav-link " href="getting-started.html">
+                    <a class="nav-link " th:href="@{/trips/createTrip}">
                         <i class="fas fa-compass"></i> Create Your Trip
                     </a>
                 </li>
@@ -234,9 +234,9 @@
 
 
             <!-- Customize -->
- <!--           <a href="#modalDemo" class="btn btn-block btn-primary mb-4" data-toggle="modal">
-                <i class="fe fe-sliders mr-2"></i> Customize
-            </a>-->
+            <a th:href="@{/populateDB}" class="btn btn-block btn-primary mb-4">
+                <i class="fe fe-sliders mr-2"></i> POPULATE DB
+            </a>
 
 
             <!-- User (md) -->
