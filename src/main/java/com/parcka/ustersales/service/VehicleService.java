@@ -20,12 +20,31 @@ public class VehicleService {
 
     }
 
+    public List<Vehicle> saveBulk(List<Vehicle> vehicle) {
+        List<Vehicle> result = vehicleRepository.saveAll(vehicle);
+        vehicleRepository.flush();
+        return result;
+
+    }
+
+    public List<String> getAllBrands() {
+        return vehicleRepository.findDistinctBrand();
+    }
+
+    public List<String> getAllModels() {
+        return vehicleRepository.findDistinctModel();
+    }
+
     public List<Vehicle> getAll() {
         return vehicleRepository.findAll();
     }
 
     public Optional<Vehicle> findByID(Long id) {
         return vehicleRepository.findById(id);
+    }
+
+    public List<Vehicle> findByBrand(String brand) {
+        return vehicleRepository.findAllByBrand(brand);
     }
 
     public void delete(Vehicle vehicle) {

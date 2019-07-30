@@ -24,6 +24,14 @@ public class DriverService {
         return driverRepository.findAll();
     }
 
+
+    public List<Driver> saveBulk(List<Driver> driver) {
+        List<Driver> drivers = driverRepository.saveAll(driver);
+        driverRepository.flush();
+        return drivers;
+
+    }
+
     public Optional<Driver> findByID(Long id) {
         return driverRepository.findById(id);
     }
