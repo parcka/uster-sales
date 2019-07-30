@@ -12325,7 +12325,7 @@ a.text-white:focus, a.text-white:hover {
         top: 0;
         bottom: 0;
         width: 100%;
-        max-width: 250px;
+        max-width: 200px;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
         overflow-y: auto
