@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/html-header :: html-header"></head>
+
+<body>
+<div class="">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div th:replace="fragments/side-bar :: side-bar"></div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="container-fluid">
+
+                <!--Stepper-->
+
+
+                <div class="main">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="m-3 p-2 text-center">
+                                <span><h2>Planning your Trip</h2></span>
+                            </div>
+                        </div>
+
+                        <form method="POST" id="trip-form" th:object="${trip}" class="" enctype="multipart/form-data">
+                            <h3>
+                                Pick your Date
+                            </h3>
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="form-group-flex">
+                                        <div class="form-group m-5 d-flex justify-content-center">
+
+                                            <input class="form-control" required readonly name="datepicker"
+                                                   id="datepicker" width="276" value=""/>
+                                            <!--<div class="valid-feedback">
+                                                Pick a date for Trip please.
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Please choose a unique and valid username.
+                                            </div>-->
+                                            <!--<div class="input-group date">-->
+                                            <!--<input type="text" class="form-control" value="12-02-2012">-->
+                                            <!--<div class="input-group-addon">-->
+                                            <!--<span class="glyphicon glyphicon-th"></span>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+
+                                            <!--<input class="form-control" type="text" name="first_name" id="first_name" placeholder="Name" />-->
+                                        </div>
+                                        <!--<div class="form-group">-->
+                                        <!--<input  class="form-control"type="text" name="last_name" id="last_name" placeholder="Surname" />-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                        <!--<input class="form-control" type="email" name="email" id="email" placeholder="License" />-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <h3>
+                                Pick your vehicle
+                            </h3>
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="form-group-flex m-5 d-flex justify-content-center">
+
+
+                                        <!--<div th:each="vehicle : ${comboVehicles}" class="card">-->
+                                        <!--<h5 th:text="${vehicle.brand}" class="card-tittle"></h5>-->
+
+                                        <!--</div>-->
+
+                                        <div class="input-group">
+                                            <select id="comboVehicle" name="comboVehicle"
+                                                    class="custom-select text-center">
+                                                <option selected value="">Select Vehicle</option>
+                                                <option th:each=" vehicle : ${comboVehicles}"
+                                                        th:value="${vehicle.id}"
+                                                        th:text="
+                                                'Brand: '+
+                                                ${vehicle.brand}+' | '
+                                                +'Model: '
+                                                +${vehicle.model}+' | '
+                                                +'Plate: '
+                                                +${vehicle.plate}"
+                                                >
+
+
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                        <!--<input class="form-control" type="text" name="first_name" id="first_name"-->
+                                        <!--placeholder="Name"/>-->
+
+                                        <!--<div class="form-group">-->
+                                        <!--<input class="form-control" type="text" name="last_name" id="last_name"-->
+                                        <!--placeholder="Surname"/>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                        <!--<input class="form-control" type="email" name="email" id="email"-->
+                                        <!--placeholder="License"/>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <h3>
+                                Pick your driver
+                            </h3>
+                            <fieldset>
+                                <div class="form-group-flex">
+                                    <div class="form-group m-5 d-flex justify-content-center">
+
+                                        <div class="input-group">
+                                            <select id="comboDriver" name="comboDriver"
+                                                    class="custom-select text-center">
+                                                <option selected value="">Select Driver</option>
+                                                <option th:each=" driver : ${comboDriver}"
+                                                        th:value="${driver.id}"
+                                                        th:text="
+                                                'Name: '+
+                                                ${driver.name}+' | '
+                                                +'Surname: '
+                                                +${driver.surname}+' | '
+                                                +'License: '
+                                                +${driver.license}"
+                                                >
+
+
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                        <!--<input class="form-control" type="text" name="first_name" id="first_name"-->
+                                        <!--placeholder="Name"/>-->
+                                    </div>
+                                    <!--<div class="form-group">-->
+                                    <!--<input class="form-control" type="text" name="last_name" id="last_name"-->
+                                    <!--placeholder="Surname"/>-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group">-->
+                                    <!--<input class="form-control" type="email" name="email" id="email"-->
+                                    <!--placeholder="License"/>-->
+                                    <!--</div>-->
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--Stepper-->
+
+
+        </div>
+    </div>
+</div>
+
+
+HOLA MUNDO
+</body>
+</html>

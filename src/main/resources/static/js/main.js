@@ -82,33 +82,39 @@ $(document).ready(function () {
 $(document).ready(function () {
 
 
-    var form = $("#signup-form");
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+        console.log('value not eguals')
+        return arg !== value;
+    }, "Value must not equal arg.");
+
+
+
+    var form = $("#trip-form");
     form.validate({
         errorPlacement: function errorPlacement(error, element) {
             element.before(error);
         },
         rules: {
-            first_name: {
+            datepicker: {
                 required: true,
             },
-            last_name: {
-                required: true,
+            comboVehicle: {
+                valueNotEquals: '',
             },
-            email: {
-                required: true,
-                email: true
-            }
+            comboDriver: {
+                valueNotEquals: '',
+            },
+
         },
         messages: {
-            first_name: {
-                required: "Please enter your first name"
+            datepicker: {
+                required: "Please enter a date for the trip"
             },
-            last_name: {
-                required: "Please enter your last name"
+            comboVehicle: {
+                valueNotEquals: "Please pick a vehicle"
             },
-            email: {
-                required: "Please enter your first name",
-                email: "Please enter a valid email address!"
+            comboDriver: {
+                valueNotEquals: "Please pick a Driver"
             }
         },
         onfocusout: function (element) {
@@ -155,6 +161,7 @@ $(document).ready(function () {
         },
         onStepChanging: function (event, currentIndex, newIndex) {
             console.log('onStepChanging')
+            console.log(form.validate())
             form.validate().settings.ignore = ":disabled,:hidden";
             return form.valid();
         },

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/html-header :: html-header"></head>
+
+<body>
+<div class="">
+    <div class="row">
+        <div class="col-md-3">
+            <div th:replace="fragments/side-bar :: side-bar"></div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="container-fluid">
+                <!--Stepper-->
+
+                <div class="main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="m-3 p-2 text-center">
+                                <span><h2>Planning your Trip</h2></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <div class="actual-step">
+                                    <h3>
+                                        Pick your Driver
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form method="POST" th:action="@{/trips/pickDriver}" id="trip-form" th:object="${driver}"
+                              class="" enctype="multipart/form-data">
+
+
+                            <div class="form-group">
+                                <div class="form-group-flex m-5 d-flex justify-content-center">
+
+
+                                    <div class="form-group-flex">
+                                        <div class="form-group m-5 d-flex justify-content-center">
+
+                                            <div class="input-group">
+                                                <select id="comboDriver" name="comboDriver"
+                                                        class="custom-select text-center">
+                                                    <option selected value="">Select Driver</option>
+                                                    <option th:each=" driver : ${comboDriver}"
+                                                            th:value="${driver.id}"
+                                                            th:text="
+                                                'Name: '+
+                                                ${driver.name}+' | '
+                                                +'Surname: '
+                                                +${driver.surname}+' | '
+                                                +'License: '
+                                                +${driver.license}"
+                                                    >
+
+
+                                                    </option>
+
+                                                </select>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Stepper-->
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
