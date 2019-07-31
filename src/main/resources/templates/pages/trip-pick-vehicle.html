@@ -4,6 +4,15 @@
 <head th:replace="fragments/html-header :: html-header"></head>
 
 <body>
+
+
+<header class="back-header">
+    <div class="down-triangle"></div>
+</header>
+
+
+
+
 <div class="">
     <div class="row">
         <div class="col-md-3">
@@ -65,7 +74,13 @@
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-group">
+                                <div class="submit-stepper-button d-flex justify-content-between m-4 p-5">
+                                    <a th:href="@{/trips/pickDate}" type="button" class="btn btn-outline-secondary button-stepper">Back</a>
+                                    <button type="submit" class="btn btn-success button-stepper">Next</button>
+
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -75,6 +90,11 @@
     </div>
 </div>
 
+
+
+<footer class="back-footer">
+    <div class="up-triangle"></div>
+</footer>
 
 </body>
 

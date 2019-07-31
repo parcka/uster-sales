@@ -6,6 +6,11 @@
 <head th:replace="fragments/html-header :: html-header"></head>
 <body>
 
+
+<header class="back-header">
+    <div class="down-triangle"></div>
+</header>
+
 <div class="myStatic">
 
     <div class="row">
@@ -104,7 +109,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="col-form-label">ID: </label><label id="idLabel"> No ID </label>
-                                <input hidden  class="form-control" id="id" name="id" type="text" value=""/>
+                                <input hidden class="form-control" id="id" name="id" type="text" value=""/>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="brand">Brand:</label>
@@ -112,7 +117,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="model">Model:</label>
-                                <input  required class="form-control" id="model" name="model" type="text" value=""/>
+                                <input required class="form-control" id="model" name="model" type="text" value=""/>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="plate">Plate:</label>
@@ -171,6 +176,10 @@
     <!--Modal Borrar-->
 </div>
 
+
+<footer class="back-footer">
+    <div class="up-triangle"></div>
+</footer>
 
 </body>
 </html>
