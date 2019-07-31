@@ -3,7 +3,17 @@
 
 <head th:replace="fragments/html-header :: html-header"></head>
 
+
 <body>
+
+
+<header class="back-header">
+    <div class="down-triangle"></div>
+</header>
+
+
+
+
 <div class="">
     <div class="row">
         <div class="col-md-3">
@@ -53,9 +63,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="submit-stepper-button d-flex justify-content-between">
-                                            <button type="submit" class="btn btn-success">Back</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        <div class="submit-stepper-button d-flex justify-content-end m-4 p-5">
+                                            <!--<button type="submit" class="btn btn-outline-secondary btn-lg">Back</button>-->
+                                            <button type="submit" class="btn btn-success button-stepper">Next</button>
 
                                         </div>
                                     </div>
@@ -74,6 +84,11 @@
     </div>
 </div>
 
+
+
+<footer class="back-footer">
+    <div class="up-triangle"></div>
+</footer>
 
 </body>
 
