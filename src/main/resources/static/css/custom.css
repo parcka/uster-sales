@@ -410,6 +410,20 @@
 
 /*Stepper*/
 
+.actual-step{
+    width: 40%;
+    text-align: center;
+    background: #1ed760;
+    padding: 8px 3px 16px 3px;
+    color: white;
+    border-radius: 4px;
+}
+
+input, label, select {
+    width: 100%;
+    display: block;
+}
+
 /* @extend display-flex; */
 display-flex, .select-icon, .select-icon i, .form-radio input + label figure, .form-flex, .steps ul, .actions ul li a, .form-row {
     display: flex;
@@ -426,7 +440,7 @@ list-type-ulli, .steps ul, .actions ul {
     padding: 160px 0; }
 
 .container {
-    width: 990px;
+    /*width: 990px;*/
     position: relative;
     margin: 0 auto;
     background: #fff;
@@ -592,7 +606,7 @@ input.error {
 label.error {
     font-size: 12px;
     color: #f63726;
-    position: absolute;
+    /*position: absolute;*/
     bottom: 17px;
     left: 0; }
 

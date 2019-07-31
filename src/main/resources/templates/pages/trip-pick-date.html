@@ -32,15 +32,17 @@
                             </div>
                         </div>
 
-                        <form method="POST" th:action="@{/trips/pickVehicle}" id="trip-form" th:object="${trip}" class="" enctype="multipart/form-data">
+                        <form method="POST" th:action="@{/trips/pickDate}" id="trip-form" th:object="${trip}" class="" enctype="multipart/form-data">
 
 
                             <div class="form-group">
                                 <div class="form-group-flex">
                                     <div class="form-group m-5 d-flex justify-content-center">
-                                        <input class="form-control" required readonly name="datepicker"
+                                        <input th:field="*{date}" th:value="${trip.date}"
+                                               class="form-control"
+                                               required readonly name="datepicker"
+                                               placeholder="MM/DD/AAAA"
                                                id="datepicker" width="276" value=""/>
-
 
                                     </div>
 
@@ -56,7 +58,7 @@
     </div>
 </div>
 
-HOLA MUNDO
+
 </body>
 
 </html>

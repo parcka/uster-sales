@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Date;
@@ -18,6 +20,7 @@ import java.util.Date;
 public class Trip {
 
     @Id
+    @GeneratedValue
     Long id;
 
     @ManyToOne
@@ -25,7 +28,7 @@ public class Trip {
 
     @ManyToOne
     Vehicle vehicle;
-
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     Date date;
 
 }

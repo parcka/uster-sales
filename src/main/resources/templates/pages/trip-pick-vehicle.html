@@ -26,26 +26,45 @@
                             <div class="col-md-12 d-flex justify-content-center">
                                 <div class="actual-step">
                                     <h3>
-                                        Pick your Date
+                                        Pick your Vehicle
                                     </h3>
                                 </div>
                             </div>
                         </div>
 
-                        <form method="POST" th:action="@{/trips/pickVehicle}" id="trip-form" th:object="${trip}" class="" enctype="multipart/form-data">
+                        <form method="POST" th:action="@{/trips/pickVehicle}" id="trip-form" th:object="${vehicle}"
+                              class="" enctype="multipart/form-data">
 
 
                             <div class="form-group">
-                                <div class="form-group-flex">
-                                    <div class="form-group m-5 d-flex justify-content-center">
-                                        <input class="form-control" required readonly name="datepicker"
-                                               id="datepicker" width="276" value=""/>
+                                <div class="form-group-flex m-5 d-flex justify-content-center">
 
 
+                                    <div class="input-group">
+                                        <select id="comboVehicle" name="comboVehicle"
+                                                class="custom-select text-center">
+                                            <option selected value="">Select Vehicle</option>
+                                            <option th:each=" vehicle : ${comboVehicles}"
+                                                    th:value="${vehicle.id}" th:field="${vehicle.id}"
+                                                    th:text="
+                                                'Brand: '+
+                                                ${vehicle.brand}+' | '
+                                                +'Model: '
+                                                +${vehicle.model}+' | '
+                                                +'Plate: '
+                                                +${vehicle.plate}"
+                                            >
+
+
+                                            </option>
+
+                                        </select>
                                     </div>
 
                                 </div>
                             </div>
+
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -56,7 +75,7 @@
     </div>
 </div>
 
-HOLA MUNDO
+
 </body>
 
 </html>
