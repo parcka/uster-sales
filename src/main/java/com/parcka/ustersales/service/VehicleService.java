@@ -5,6 +5,7 @@ import com.parcka.ustersales.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,10 @@ public class VehicleService {
 
     public List<Vehicle> getAll() {
         return vehicleRepository.findAll();
+    }
+
+    public List<Vehicle> findByNotInDate(Date date) {
+        return vehicleRepository.findByNotInDate(date);
     }
 
     public Optional<Vehicle> findByID(Long id) {

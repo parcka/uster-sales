@@ -411,7 +411,7 @@
 /*Stepper*/
 
 .actual-step{
-    width: 40%;
+    width: 100%;
     text-align: center;
     background: #1ed760;
     padding: 8px 3px 16px 3px;
@@ -702,3 +702,18 @@ label.error {
         width: 100%; } }
 
 /*Stepper*/
+
+
+
+
+/*Animation*/
+.transition-fade {
+    transition: 0.4s;
+    opacity: 1;
+}
+
+html.is-animating .transition-fade {
+    opacity: 0;
+}
+
+/*Animation*/

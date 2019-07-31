@@ -82,6 +82,11 @@ public class TripController {
 
     @GetMapping("/pickVehicle")
     public String getPickVehicle(@ModelAttribute(value = "trip") Trip trip ,Model model, HttpSession session) {
+        Trip actualTrip = (Trip) session.getAttribute(ACTUAL_TRIP);
+
+
+
+        model.addAttribute("comboVehicles",vehicleService.findByNotInDate(actualTrip.getDate()));
 
         model.addAttribute(ACTUAL_TRIP, session.getAttribute(ACTUAL_TRIP));
         model.addAttribute("vehicle", new Vehicle());
@@ -99,7 +104,14 @@ public class TripController {
     }
 
     @GetMapping("/pickDriver")
-    public String getPickDriver(Model model) {
+    public String getPickDriver(Model model,  HttpSession session) {
+
+        Trip actualTrip = (Trip) session.getAttribute(ACTUAL_TRIP);
+        char licensedRequiredForDriver = actualTrip.getVehicle().getLicenseRequired();
+
+
+        model.addAttribute("comboDriver",driverService.findByNotInDateAndLicenseRequired(actualTrip.getDate(),licensedRequiredForDriver));
+
 
         model.addAttribute("driver", new Driver());
         return TRIP_PICK_DRIVER;
@@ -115,6 +127,8 @@ public class TripController {
         trip.setDriver(getDriverFromRequestAndID(request));
 
         saveTrip(trip);
+
+        session.removeAttribute(ACTUAL_TRIP);
 
         return REDIRECT_TRIPS_LIST_TRIPS;
     }
@@ -149,17 +163,17 @@ public class TripController {
         return vehicleService.getAllModels();
     }
 
-    @ModelAttribute("comboVehicles")
-    public List<Vehicle> getComboVehicles() {
-        log.info("Getting all vehicles");
-        return vehicleService.getAll();
-    }
+//    @ModelAttribute("comboVehicles")
+//    public List<Vehicle> getComboVehicles() {
+//        log.info("Getting all vehicles");
+//        return vehicleService.getAll();
+//    }
 
-    @ModelAttribute("comboDriver")
-    public List<Driver> getComboDrivers() {
-        log.info("Getting all drivers");
-        return driverService.getAll();
-    }
+//    @ModelAttribute("comboDriver")
+//    public List<Driver> getComboDrivers() {
+//        log.info("Getting all drivers");
+//        return driverService.getAll();
+//    }
 
 //    @PostMapping("/saveVehicle")
 ////    @ModelAttribute(value = "vehicle")
