@@ -3,6 +3,63 @@
     margin-right: 1.5rem;
 }
 
+
+.back-header{
+    /*background-color: #0dff9a;*/
+    width: 100%;
+    height: 200px;
+    position: fixed;
+    background-image: url("../img/eco-ecology-environment-5808.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover;
+    z-index: -1;
+
+}
+
+.down-triangle{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 30vh 100vw;
+    border-style: solid;
+    border-color: transparent transparent #f9fbfd transparent;
+}
+
+.up-triangle{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-width: 0px 0 41vh 120vw;
+    border-style: solid;
+    border-color:  transparent transparent transparent #f9fbfd;
+}
+
+
+.back-footer{
+    /*background-color: #0dff9a;*/
+    width: 100%;
+    height: 250px;
+    position: fixed;
+    bottom: 0;
+
+    background-image: url("../img/eco-ecology-environment-5808.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover;
+    z-index: -1;
+}
+
+.button-stepper{
+    height: 54px;
+    width: 35%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 /*Side-bar*/
 
 
