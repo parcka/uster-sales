@@ -70,6 +70,9 @@ $(document).ready(function () {
         $('#myModal').modal();
     });
 
+    $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
 
 
 
@@ -117,9 +120,9 @@ $(document).ready(function () {
                 valueNotEquals: "Please pick a Driver"
             }
         },
-        onfocusout: function (element) {
-            $(element).valid();
-        },
+        // onfocusout: function (element) {
+        //     $(element).valid();
+        // },
         highlight: function (element, errorClass, validClass) {
             $(element).parent().parent().find('.form-group').addClass('form-error');
             $(element).removeClass('valid');
@@ -131,7 +134,7 @@ $(document).ready(function () {
             $(element).addClass('valid');
         }
     });
-    form.steps({
+    /*form.steps({
         headerTag: "h3",
         bodyTag: "fieldset",
         transitionEffect: "fade",
@@ -177,7 +180,7 @@ $(document).ready(function () {
             console.log('onStepChanged')
 
         }
-    });
+    });*/
 
     // jQuery.extend(jQuery.validator.messages, {
     //     required: "",

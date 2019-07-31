@@ -13,45 +13,61 @@
         <div class="col-md-9">
             <div class="container-fluid">
                 <!--Stepper-->
-
-                <div class="main">
-                    <div class="container">
-                        <div class="row">
-                            <div class="m-3 p-2 text-center">
-                                <span><h2>Planning your Trip</h2></span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 d-flex justify-content-center">
-                                <div class="actual-step">
-                                    <h3>
-                                        Pick your Date
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        <form method="POST" th:action="@{/trips/pickDate}" id="trip-form" th:object="${trip}" class="" enctype="multipart/form-data">
+                <div id="barba-wrapper">
+                    <div class="barba-container">
 
 
-                            <div class="form-group">
-                                <div class="form-group-flex">
-                                    <div class="form-group m-5 d-flex justify-content-center">
-                                        <input th:field="*{date}" th:value="${trip.date}"
-                                               class="form-control"
-                                               required readonly name="datepicker"
-                                               placeholder="MM/DD/AAAA"
-                                               id="datepicker" width="276" value=""/>
-
+                        <div class="main">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="m-3 p-2 text-center">
+                                        <span><h2>Planning your Trip</h2></span>
                                     </div>
-
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <div class="actual-step">
+                                            <h3>
+                                                Pick your Date
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form method="POST" th:action="@{/trips/pickDate}" id="trip-form" th:object="${trip}"
+                                      class="" enctype="multipart/form-data">
+
+
+                                    <div class="form-group">
+                                        <div class="form-group-flex">
+                                            <div class="form-group m-5 d-flex justify-content-center">
+                                                <input th:field="*{date}" th:value="${trip.date}"
+                                                       class="form-control"
+                                                       required readonly name="datepicker"
+                                                       placeholder="MM/DD/AAAA"
+                                                       id="datepicker" width="276" value=""/>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="submit-stepper-button d-flex justify-content-between">
+                                            <button type="submit" class="btn btn-success">Back</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        </div>
+
                     </div>
+
+
                 </div>
+
             </div>
             <!--Stepper-->
         </div>

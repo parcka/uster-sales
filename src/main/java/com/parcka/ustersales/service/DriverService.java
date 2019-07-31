@@ -5,6 +5,7 @@ import com.parcka.ustersales.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,10 @@ public class DriverService {
         driverRepository.flush();
         return drivers;
 
+    }
+
+    public List<Driver> findByNotInDateAndLicenseRequired(Date date, char licensedRequired) {
+        return driverRepository.findByNotInDateAndLicenseRequired(date, licensedRequired);
     }
 
     public Optional<Driver> findByID(Long id) {
