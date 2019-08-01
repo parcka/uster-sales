@@ -126,7 +126,7 @@ public class TripController {
 
         trip.setDriver(getDriverFromRequestAndID(request));
 
-        saveTrip(trip);
+        saveActualTrip(trip);
 
         session.removeAttribute(ACTUAL_TRIP);
 
@@ -143,7 +143,7 @@ public class TripController {
         return vehicleService.findByID(idVehicle).get();
     }
 
-    private void saveTrip(Trip trip){
+    private void saveActualTrip(Trip trip){
         log.info("Creating TRIP {}", trip);
         tripService.save(trip);
     }
@@ -175,20 +175,19 @@ public class TripController {
 //        return driverService.getAll();
 //    }
 
-//    @PostMapping("/saveVehicle")
-////    @ModelAttribute(value = "vehicle")
-//    public String saveVehicle(Vehicle vehicle) {
-//        log.info("Saving vehicle: {}", vehicle);
-//        vehicleService.save(vehicle);
-//        return REDIRECT_TRIPS_LIST_TRIPS;
-//    }
+    @PostMapping("/saveTrip")
+    public String saveTrip(Trip trip) {
+        log.info("Saving trip: {}", trip);
+        saveActualTrip(trip);
+        return REDIRECT_TRIPS_LIST_TRIPS;
+    }
 //
-//    @GetMapping("/delete")
-//    public String delete(long id) {
-//        log.info("Deleting vehicle ID: {}", id);
-//        vehicleService.deleteById(id);
-//        return REDIRECT_TRIPS_LIST_TRIPS;
-//    }
+    @GetMapping("/delete")
+    public String delete(long id) {
+        log.info("Deleting trip ID: {}", id);
+        tripService.deleteById(id);
+        return REDIRECT_TRIPS_LIST_TRIPS;
+    }
 //
 //
 //    @GetMapping("/findOne")

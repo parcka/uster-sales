@@ -54,9 +54,8 @@
                                     <td th:text="${trip.date}"></td>
                                     <td>
                                         <a class="btn btn-danger delBtn" th:method="delete"
-                                           th:href="@{/drivers/delete/(id=${trip.id})}">Delete</a>
-                                        <a class="btn btn-primary eBtnDriver"
-                                           th:href="@{/drivers/findOne/(id=${trip.id})}">Edit</a>
+                                           th:href="@{/trips/delete/(id=${trip.id})}">Delete</a>
+
                                     </td>
                                 </tr>
                                 </tbody>
@@ -92,53 +91,53 @@
 
     <!--Formulario Salvar / Editar-->
 
-    <div class="myForm">
-        <form action="#" method="post" th:action="@{/drivers/saveDriver}" th:object="${driver}">
-            <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
-                 id="exampleModal" role="dialog"
-                 tabindex="-1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Update or
-                                Create</h5>
-                            <button aria-label="Close" class="close" data-dismiss="modal"
-                                    type="button">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="col-form-label">ID: </label><label id="idLabel"> No ID </label>
-                                <input hidden class="form-control" id="id" name="id" type="text" value=""/>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label" for="name">Name:</label>
-                                <input class="form-control" id="name" name="name" type="text" value=""/>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label" for="surname">SurName:</label>
-                                <input class="form-control" id="surname" name="surname" type="text" value=""/>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label" for="license">License:</label>
-                                <input placeholder="License class obtained"
-                                       maxlength="1" class="form-control" id="license" name="license" type="text"
-                                       value=""/>
-                            </div>
+    <!--<div class="myForm">-->
+        <!--<form action="#" method="post" th:action="@{/drivers/saveDriver}" th:object="${driver}">-->
+            <!--<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"-->
+                 <!--id="exampleModal" role="dialog"-->
+                 <!--tabindex="-1">-->
+                <!--<div class="modal-dialog" role="document">-->
+                    <!--<div class="modal-content">-->
+                        <!--<div class="modal-header">-->
+                            <!--<h5 class="modal-title" id="exampleModalLabel">Update or-->
+                                <!--Create</h5>-->
+                            <!--<button aria-label="Close" class="close" data-dismiss="modal"-->
+                                    <!--type="button">-->
+                                <!--<span aria-hidden="true">&times;</span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="modal-body">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-form-label">ID: </label><label id="idLabel"> No ID </label>-->
+                                <!--<input hidden class="form-control" id="id" name="id" type="text" value=""/>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-form-label" for="name">Name:</label>-->
+                                <!--<input class="form-control" id="name" name="name" type="text" value=""/>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-form-label" for="surname">SurName:</label>-->
+                                <!--<input class="form-control" id="surname" name="surname" type="text" value=""/>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-form-label" for="license">License:</label>-->
+                                <!--<input placeholder="License class obtained"-->
+                                       <!--maxlength="1" class="form-control" id="license" name="license" type="text"-->
+                                       <!--value=""/>-->
+                            <!--</div>-->
 
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" data-dismiss="modal"
-                                    type="button">Close
-                            </button>
-                            <input class="btn btn-primary" type="submit" value="save"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+                        <!--</div>-->
+                        <!--<div class="modal-footer">-->
+                            <!--<button class="btn btn-secondary" data-dismiss="modal"-->
+                                    <!--type="button">Close-->
+                            <!--</button>-->
+                            <!--<input class="btn btn-primary" type="submit" value="save"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
 
     <!--Formulario Salvar / Editar-->
 
@@ -158,7 +157,7 @@
                 </div>
                 <div class="modal-body">
                     <p class="alert alert-danger">
-                        Are you sure you want to delete this Driver?
+                        Are you sure you want to delete this Trip?
                     </p>
                 </div>
                 <div class="modal-footer">

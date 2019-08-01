@@ -63,6 +63,37 @@ $(document).ready(function () {
     // Driver Functionality
 
 
+    // Trip Functionality
+
+    // $('.table .eBtnTrip').on('click', function (event) {
+    //     event.preventDefault();
+    //     var href = $(this).attr('href');
+    //     var text = $(this).text(); //return New or Edit
+    //
+    //     if (text === 'Edit') {
+    //         $.get(href, function (trip, status) {
+    //             console.log(trip)
+    //             $('.myForm #idLabel').text(trip.id);
+    //             $('.myForm #id').val(driver.id);
+    //             $('.myForm #name').val(driver.name);
+    //             $('.myForm #surname').val(driver.surname);
+    //             $('.myForm #license').val(driver.license);
+    //
+    //         });
+    //         $('.myForm #exampleModal').modal();
+    //     } else {
+    //         $('.myForm #idLabel').text('');
+    //         $('.myForm #id').val('');
+    //         $('.myForm #name').val('');
+    //         $('.myForm #surname').val('');
+    //         $('.myForm #license').val('');
+    //         $('.myForm #exampleModal').modal();
+    //     }
+    // });
+
+    // Trip Functionality
+
+
     $('.table .delBtn').on('click', function (event) {
         event.preventDefault();
         var href = $(this).attr('href');
