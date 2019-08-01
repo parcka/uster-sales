@@ -3,6 +3,22 @@
     margin-right: 1.5rem;
 }
 
+.main-message{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 80vh;
+    align-items: center;
+}
+
+.main-message .title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 5em;
+    text-transform: none;
+    text-shadow: 2px 2px #0000005c;
+    color: #5900ba;
+    transform: rotate(-10deg);
+}
 
 .back-header{
     /*background-color: #0dff9a;*/
