@@ -473,13 +473,23 @@
 }
 
 .btn-success{
-    background-color: #00d214;
+    background-color: #5900ba;
+    border-color: #5900ba;
+    /*background-color: #00d214;*/
+    /*background-color: #5900ba;*/
+}
+
+.btn-success:hover{
+    background-color: #380075;
+    border-color: #5900ba;
+    /*background-color: #00d214;*/
+    /*background-color: #5900ba;*/
 }
 
 .actual-step {
     width: 100%;
     text-align: center;
-    background: #00d214;
+    background: #5900ba;
     padding: 16px 0 16px 0px;
     color: white;
 
@@ -490,6 +500,7 @@
     align-items: center;
     margin: 0;
 }
+
 
 .actual-step h3{
     margin: 0;
