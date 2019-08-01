@@ -467,13 +467,32 @@
 
 /*Stepper*/
 
-.actual-step{
+.row .d-flex{
+    /*margin: inherit;*/
+    padding: inherit;
+}
+
+.btn-success{
+    background-color: #00d214;
+}
+
+.actual-step {
     width: 100%;
     text-align: center;
-    background: #1ed760;
-    padding: 8px 3px 16px 3px;
+    background: #00d214;
+    padding: 16px 0 16px 0px;
     color: white;
-    border-radius: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 65px;
+    align-items: center;
+    margin: 0;
+}
+
+.actual-step h3{
+    margin: 0;
 }
 
 input, label, select {
