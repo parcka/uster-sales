@@ -11,22 +11,22 @@
 </header>
 
 
+<div class="row">
+    <div class="col-md-3">
+        <div th:replace="fragments/side-bar :: side-bar"></div>
+    </div>
 
-<div class="">
 
-    <div class="row">
-        <div class="col-md-3">
-            <div th:replace="fragments/side-bar :: side-bar"></div>
-        </div>
-
-        <div class="col-md-9">
-
+    <div class="col-md-9">
+        <div class="animsition">
             <div class="container-fluid">
 
 
                 <div class="main-message">
                     <img th:src="@{../img/spring-icon.png}" class="navbar-brand-img
-                        mx-auto" style="max-height: 14.5rem;;background-color: #5900ba;background-blend-mode: multiply;border-radius: 37%;" alt="...">
+                        mx-auto"
+                         style="max-height: 14.5rem;;background-color: #5900ba;background-blend-mode: multiply;border-radius: 37%;"
+                         alt="...">
                     <h2 class="title">Welcome to <span> Uster APP</span></h2>
                     <p>Copyright &#0169 2019</p>
                 </div>

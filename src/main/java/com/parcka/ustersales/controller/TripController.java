@@ -8,6 +8,7 @@ import com.parcka.ustersales.service.TripService;
 import com.parcka.ustersales.service.VehicleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @Slf4j
@@ -31,14 +34,14 @@ public class TripController {
     @Autowired
     TripService tripService;
 
-//    Pages
+    //    Pages
     private static final String TRIP_CREATION = "pages/trip-creation";
     private static final String TRIP_PICK_DATE = "pages/trip-pick-date";
     private static final String TRIP_PICK_VEHICLE = "pages/trip-pick-vehicle";
     private static final String TRIP_PICK_DRIVER = "pages/trip-pick-driver";
     private static final String TRIP_LIST_TRIP = "pages/list-trip";
 
-//    Actions
+    //    Actions
     private static final String REDIRECT_TRIPS_LIST_TRIPS = "redirect:/trips/listTrip";
     private static final String REDIRECT_TRIPS_PICK_DATE = "redirect:/trips/pickDate";
     private static final String REDIRECT_TRIPS_PICK_VEHICLE = "redirect:/trips/pickVehicle";
@@ -53,7 +56,21 @@ public class TripController {
     @GetMapping("/listTrip")
     public String getListVehicle(Model model, @RequestParam(defaultValue = "0") int page) {
 
-        model.addAttribute("dataTrip", tripService.getAll());
+
+        int size = 5; //default page size is 5
+
+        Page<Trip> tripPage = tripService.getAll(page, size);
+        int totalPages = tripPage.getTotalPages();
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+
+        model.addAttribute("dataTrip", tripPage);
         return TRIP_LIST_TRIP;
     }
 
@@ -75,18 +92,17 @@ public class TripController {
     @PostMapping("/pickDate")
     public String postPickDate(@ModelAttribute("trip") Trip trip, Model model, HttpSession session) {
 
-        session.setAttribute("trip",trip);
+        session.setAttribute("trip", trip);
 //        model.addAttribute("trip", trip);
         return REDIRECT_TRIPS_PICK_VEHICLE;
     }
 
     @GetMapping("/pickVehicle")
-    public String getPickVehicle(@ModelAttribute(value = "trip") Trip trip ,Model model, HttpSession session) {
+    public String getPickVehicle(@ModelAttribute(value = "trip") Trip trip, Model model, HttpSession session) {
         Trip actualTrip = (Trip) session.getAttribute(ACTUAL_TRIP);
 
 
-
-        model.addAttribute("comboVehicles",vehicleService.findByNotInDate(actualTrip.getDate()));
+        model.addAttribute("comboVehicles", vehicleService.findByNotInDate(actualTrip.getDate()));
 
         model.addAttribute(ACTUAL_TRIP, session.getAttribute(ACTUAL_TRIP));
         model.addAttribute("vehicle", new Vehicle());
@@ -96,21 +112,21 @@ public class TripController {
     @PostMapping("/pickVehicle")
     public String postPickVehicle(Model model, HttpServletRequest request, HttpSession session) {
 
-       Trip trip = (Trip) session.getAttribute(ACTUAL_TRIP);
+        Trip trip = (Trip) session.getAttribute(ACTUAL_TRIP);
 
-       trip.setVehicle(getVehicleFromRequestAndID(request));
+        trip.setVehicle(getVehicleFromRequestAndID(request));
 
         return REDIRECT_TRIPS_PICK_DRIVER;
     }
 
     @GetMapping("/pickDriver")
-    public String getPickDriver(Model model,  HttpSession session) {
+    public String getPickDriver(Model model, HttpSession session) {
 
         Trip actualTrip = (Trip) session.getAttribute(ACTUAL_TRIP);
         char licensedRequiredForDriver = actualTrip.getVehicle().getLicenseRequired();
 
 
-        model.addAttribute("comboDriver",driverService.findByNotInDateAndLicenseRequired(actualTrip.getDate(),licensedRequiredForDriver));
+        model.addAttribute("comboDriver", driverService.findByNotInDateAndLicenseRequired(actualTrip.getDate(), licensedRequiredForDriver));
 
 
         model.addAttribute("driver", new Driver());
@@ -133,21 +149,20 @@ public class TripController {
         return REDIRECT_TRIPS_LIST_TRIPS;
     }
 
-    private Driver getDriverFromRequestAndID(HttpServletRequest request){
+    private Driver getDriverFromRequestAndID(HttpServletRequest request) {
         Long idDriver = Long.valueOf(request.getParameter("comboDriver"));
         return driverService.findByID(idDriver).get();
     }
 
-    private Vehicle getVehicleFromRequestAndID(HttpServletRequest request){
+    private Vehicle getVehicleFromRequestAndID(HttpServletRequest request) {
         Long idVehicle = Long.valueOf(request.getParameter("comboVehicle"));
         return vehicleService.findByID(idVehicle).get();
     }
 
-    private void saveActualTrip(Trip trip){
+    private void saveActualTrip(Trip trip) {
         log.info("Creating TRIP {}", trip);
         tripService.save(trip);
     }
-
 
 
     @ModelAttribute("brands")
@@ -181,7 +196,8 @@ public class TripController {
         saveActualTrip(trip);
         return REDIRECT_TRIPS_LIST_TRIPS;
     }
-//
+
+    //
     @GetMapping("/delete")
     public String delete(long id) {
         log.info("Deleting trip ID: {}", id);

@@ -4,98 +4,101 @@
 <head th:replace="fragments/html-header :: html-header"></head>
 
 <body>
+<div class="animsition">
+
+    <header class="back-header">
+        <div class="down-triangle"></div>
+    </header>
 
 
-<header class="back-header">
-    <div class="down-triangle"></div>
-</header>
+    <div class="">
+        <div class="row">
+            <div class="col-md-3">
+                <div th:replace="fragments/side-bar :: side-bar"></div>
+            </div>
 
+            <div class="col-md-9">
+                <div class="animsition">
+                    <div class="container-fluid">
+                        <!--Stepper-->
 
-
-
-<div class="">
-    <div class="row">
-        <div class="col-md-3">
-            <div th:replace="fragments/side-bar :: side-bar"></div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="container-fluid">
-                <!--Stepper-->
-
-                <div class="main">
-                    <div class="container">
-                        <div class="row">
-                            <div class="m-3 p-2 text-center">
-                                <span><h2>Planning your Trip</h2></span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 d-flex justify-content-center">
-                                <div class="actual-step">
-                                    <h3>
-                                        Pick your Vehicle
-                                    </h3>
+                        <div class="main">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="m-3 p-2 text-center">
+                                        <span><h2>Planning your Trip</h2></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <form method="POST" th:action="@{/trips/pickVehicle}" id="trip-form" th:object="${vehicle}"
-                              class="" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <div class="actual-step">
+                                            <h3>
+                                                Pick your Vehicle
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form method="POST" th:action="@{/trips/pickVehicle}" id="trip-form"
+                                      th:object="${vehicle}"
+                                      class="" enctype="multipart/form-data">
 
 
-                            <div class="form-group">
-                                <div class="form-group-flex m-5 d-flex justify-content-center">
+                                    <div class="form-group">
+                                        <div class="form-group-flex m-5 d-flex justify-content-center">
 
 
-                                    <div class="input-group">
-                                        <select id="comboVehicle" name="comboVehicle"
-                                                class="custom-select text-center">
-                                            <option selected value="">Select Vehicle</option>
-                                            <option th:each=" vehicle : ${comboVehicles}"
-                                                    th:value="${vehicle.id}" th:field="${vehicle.id}"
-                                                    th:text="
+                                            <div class="input-group">
+                                                <select id="comboVehicle" name="comboVehicle"
+                                                        class="custom-select text-center">
+                                                    <option selected value="">Select Vehicle</option>
+                                                    <option th:each=" vehicle : ${comboVehicles}"
+                                                            th:value="${vehicle.id}" th:field="${vehicle.id}"
+                                                            th:text="
                                                 'Brand: '+
                                                 ${vehicle.brand}+' | '
                                                 +'Model: '
                                                 +${vehicle.model}+' | '
                                                 +'Plate: '
                                                 +${vehicle.plate}"
-                                            >
+                                                    >
 
 
-                                            </option>
+                                                    </option>
 
-                                        </select>
+                                                </select>
+                                            </div>
+
+                                        </div>
                                     </div>
 
-                                </div>
+
+                                    <div class="form-group">
+                                        <div class="submit-stepper-button d-flex justify-content-between m-4 p-5">
+                                            <a th:href="@{/trips/pickDate}"
+                                               class="btn btn-outline-secondary button-stepper">Back</a>
+                                            <button type="submit" class="btn btn-success button-stepper">Next</button>
+
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-
-
-                            <div class="form-group">
-                                <div class="submit-stepper-button d-flex justify-content-between m-4 p-5">
-                                    <a th:href="@{/trips/pickDate}" type="button" class="btn btn-outline-secondary button-stepper">Back</a>
-                                    <button type="submit" class="btn btn-success button-stepper">Next</button>
-
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
+                <!--Stepper-->
             </div>
-            <!--Stepper-->
         </div>
     </div>
+
+
+    <footer class="back-footer">
+        <div class="up-triangle"></div>
+    </footer>
+
+
 </div>
-
-
-
-<footer class="back-footer">
-    <div class="up-triangle"></div>
-</footer>
-
 </body>
 
 </html>

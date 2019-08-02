@@ -8,177 +8,135 @@
 
 
 
-<header class="back-header">
-    <div class="down-triangle"></div>
-</header>
+    <header class="back-header">
+        <div class="down-triangle"></div>
+    </header>
 
 
-<div class="myStatic">
+    <div class="myStatic">
 
-    <div class="row">
-        <div class="col-md-3">
-            <div th:replace="fragments/side-bar :: side-bar"></div>
-        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div th:replace="fragments/side-bar :: side-bar"></div>
+            </div>
 
-        <div class="col-md-9">
-            <div class="container-fluid">
-
-
-
-                <!--List-->
-
-                <div>
+            <div class="col-md-9">
+                <div class="container-fluid">
 
 
+                    <!--List-->
 
-                    <div class="card mt-6">
-                        <div class="card-block">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Brand Vehicle</th>
-                                    <th>Driver Name</th>
-                                    <th>Driver Surname</th>
-                                    <th>Date</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                <tr th:each="trip : ${dataTrip}">
+                    <div>
 
 
-                                    <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
-                                    <td th:text="${trip.vehicle.brand}">  <  </td>
-                                    <td th:text="${trip.driver.name}"></td>
-                                    <td th:text="${trip.driver.surname}"></td>
-                                    <td th:text="${trip.date}"></td>
-                                    <td>
-                                        <a class="btn btn-danger delBtn" th:method="delete"
-                                           th:href="@{/trips/delete/(id=${trip.id})}">Delete</a>
+                        <div class="card mt-6">
+                            <div class="card-block">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Brand Vehicle</th>
+                                        <th>Plate</th>
+                                        <th>license Required</th>
+                                        <th>Driver Name</th>
+                                        <th>Driver Surname</th>
+                                        <th>Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <hr/>
-                            <!--<ul class="nav nav-pills">-->
-                            <!--<li class="nav-item"-->
-                            <!--th:each="i : ${#numbers.sequence(0,data.totalPages-1)}"><a-->
-                            <!--class="nav-link" th:classappend="${currentPage}==${i}?'active':''" th:href="@{/(page=${i})}"-->
-                            <!--th:text="${i}"></a></li>-->
-                            <!--</ul>-->
+                                    <tr th:each="trip : ${dataTrip}">
+
+
+                                        <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
+                                        <td th:text="${trip.vehicle.brand}"></td>
+                                        <td th:text="${trip.vehicle.plate}"></td>
+                                        <td th:text="${trip.vehicle.licenseRequired}"></td>
+                                        <td th:text="${trip.driver.name}"></td>
+                                        <td th:text="${trip.driver.surname}"></td>
+                                        <td th:text="${trip.date}"></td>
+                                        <td>
+                                            <a class="btn btn-danger delBtn" th:method="delete"
+                                               th:href="@{/trips/delete/(id=${trip.id})}">Delete</a>
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <hr/>
+
+
+                                <nav aria-label="Page navigation example" th:if="${dataTrip.totalPages > 0}">
+                                    <ul class="pagination justify-content-center">
+
+                                        <li th:each="pageNumber : ${pageNumbers}"
+                                            th:class="${pageNumber==dataTrip.number + 1} ? 'page-item active' : 'page-item' ">
+                                            <!--<a class="page-link" href="#">1</a>-->
+                                            <a th:href="@{/trips/listTrip(page=${pageNumber-1})}"
+                                               th:text=${pageNumber}
+                                               class="page-link"></a>
+                                        </li>
+
+
+                                    </ul>
+                                </nav>
+
+                            </div>
                         </div>
+
+
                     </div>
 
-
+                    <!--List-->
                 </div>
 
-                <!--List-->
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<!--Lista de drivers-->
-
-<div class="container">
-
-
-    <!--Fin Lista de drivers-->
-
-
-    <!--Formulario Salvar / Editar-->
-
-    <!--<div class="myForm">-->
-        <!--<form action="#" method="post" th:action="@{/drivers/saveDriver}" th:object="${driver}">-->
-            <!--<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"-->
-                 <!--id="exampleModal" role="dialog"-->
-                 <!--tabindex="-1">-->
-                <!--<div class="modal-dialog" role="document">-->
-                    <!--<div class="modal-content">-->
-                        <!--<div class="modal-header">-->
-                            <!--<h5 class="modal-title" id="exampleModalLabel">Update or-->
-                                <!--Create</h5>-->
-                            <!--<button aria-label="Close" class="close" data-dismiss="modal"-->
-                                    <!--type="button">-->
-                                <!--<span aria-hidden="true">&times;</span>-->
-                            <!--</button>-->
-                        <!--</div>-->
-                        <!--<div class="modal-body">-->
-                            <!--<div class="form-group">-->
-                                <!--<label class="col-form-label">ID: </label><label id="idLabel"> No ID </label>-->
-                                <!--<input hidden class="form-control" id="id" name="id" type="text" value=""/>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<label class="col-form-label" for="name">Name:</label>-->
-                                <!--<input class="form-control" id="name" name="name" type="text" value=""/>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<label class="col-form-label" for="surname">SurName:</label>-->
-                                <!--<input class="form-control" id="surname" name="surname" type="text" value=""/>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<label class="col-form-label" for="license">License:</label>-->
-                                <!--<input placeholder="License class obtained"-->
-                                       <!--maxlength="1" class="form-control" id="license" name="license" type="text"-->
-                                       <!--value=""/>-->
-                            <!--</div>-->
-
-                        <!--</div>-->
-                        <!--<div class="modal-footer">-->
-                            <!--<button class="btn btn-secondary" data-dismiss="modal"-->
-                                    <!--type="button">Close-->
-                            <!--</button>-->
-                            <!--<input class="btn btn-primary" type="submit" value="save"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</form>-->
-    <!--</div>-->
-
-    <!--Formulario Salvar / Editar-->
-
-
-    <!--Modal Borrar-->
-
-    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal"
-         role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Delete Record</h5>
-                    <button aria-label="Close" class="close" data-dismiss="modal"
-                            type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="alert alert-danger">
-                        Are you sure you want to delete this Trip?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal"
-                            type="button">Close
-                    </button>
-                    <a class="btn btn-danger" href="" id="delRef">Delete</a>
-                </div>
             </div>
         </div>
     </div>
 
-    <!--Modal Borrar-->
-</div>
+
+    <!--Lista de drivers-->
+
+    <div class="container">
 
 
+        <!--Fin Lista de drivers-->
 
 
-<footer class="back-footer">
-    <div class="up-triangle"></div>
-</footer>
+        <!--Modal Borrar-->
+
+        <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal"
+             role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Delete Record</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="alert alert-danger">
+                            Are you sure you want to delete this Trip?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal"
+                                type="button">Close
+                        </button>
+                        <a class="btn btn-danger" href="" id="delRef">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal Borrar-->
+    </div>
+
+
+    <footer class="back-footer">
+        <div class="up-triangle"></div>
+    </footer>
 
 </body>
 </html>
