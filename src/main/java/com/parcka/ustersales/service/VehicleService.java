@@ -3,6 +3,8 @@ package com.parcka.ustersales.service;
 import com.parcka.ustersales.model.Vehicle;
 import com.parcka.ustersales.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -38,6 +40,10 @@ public class VehicleService {
 
     public List<Vehicle> getAll() {
         return vehicleRepository.findAll();
+    }
+
+    public Page<Vehicle> getAll(int page, int size) {
+        return vehicleRepository.findAll(PageRequest.of(page,size));
     }
 
     public List<Vehicle> findByNotInDate(Date date) {

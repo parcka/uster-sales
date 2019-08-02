@@ -5,51 +5,53 @@
 
 <body>
 
+<div class="animsition">
 
-<header class="back-header">
-    <div class="down-triangle"></div>
-</header>
+    <header class="back-header">
+        <div class="down-triangle"></div>
+    </header>
 
 
+    <div class="">
+        <div class="row">
+            <div class="col-md-3">
+                <div th:replace="fragments/side-bar :: side-bar"></div>
+            </div>
 
-<div class="">
-    <div class="row">
-        <div class="col-md-3">
-            <div th:replace="fragments/side-bar :: side-bar"></div>
-        </div>
+            <div class="col-md-9">
+                <div class="animsition">
+                    <div class="container-fluid">
+                        <!--Stepper-->
 
-        <div class="col-md-9">
-            <div class="container-fluid">
-                <!--Stepper-->
-
-                <div class="main">
-                    <div class="container">
-                        <div class="row">
-                            <div class="m-3 p-2 text-center">
-                                <span><h2>Planning your Trip</h2></span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 d-flex justify-content-center">
-                                <div class="actual-step">
-                                    <h3>
-                                        Pick your Driver
-                                    </h3>
+                        <div class="main">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="m-3 p-2 text-center">
+                                        <span><h2>Planning your Trip</h2></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <form method="POST" th:action="@{/trips/pickDriver}" id="trip-form" th:object="${driver}"
-                              class="" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <div class="actual-step">
+                                            <h3>
+                                                Pick your Driver
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form method="POST" th:action="@{/trips/pickDriver}" id="trip-form"
+                                      th:object="${driver}"
+                                      class="" enctype="multipart/form-data">
 
 
-                            <div class="form-group">
-                                <div class="form-group-flex m-5 d-flex justify-content-center">
+                                    <div class="form-group">
+                                        <div class="form-group-flex m-5 d-flex justify-content-center">
 
 
-                                    <!--<div class="form-group-flex">-->
-                                        <!--<div class="form-group m-5 d-flex justify-content-center">-->
+                                            <!--<div class="form-group-flex">-->
+                                            <!--<div class="form-group m-5 d-flex justify-content-center">-->
 
                                             <div class="input-group">
                                                 <select id="comboDriver" name="comboDriver"
@@ -73,37 +75,41 @@
                                             </div>
 
 
-                                        <!--</div>-->
+                                            <!--</div>-->
 
-                                    <!--</div>-->
+                                            <!--</div>-->
 
 
-                                </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="submit-stepper-button d-flex justify-content-between m-4 p-5">
+                                            <a th:href="@{/trips/pickVehicle}"
+                                               class="btn btn-outline-secondary button-stepper">Back</a>
+                                            <button type="submit" class="btn btn-success button-stepper">Submit</button>
+
+                                        </div>
+                                    </div>
+
+                                </form>
                             </div>
-
-
-                            <div class="form-group">
-                                <div class="submit-stepper-button d-flex justify-content-between m-4 p-5">
-                                    <a th:href="@{/trips/pickVehicle}" type="button" class="btn btn-outline-secondary button-stepper">Back</a>
-                                    <button type="submit" class="btn btn-success button-stepper">Submit</button>
-
-                                </div>
-                            </div>
-
-                        </form>
+                        </div>
                     </div>
                 </div>
+                <!--Stepper-->
             </div>
-            <!--Stepper-->
         </div>
     </div>
+
+
+    <footer class="back-footer">
+        <div class="up-triangle"></div>
+    </footer>
+
+
 </div>
-
-
-<footer class="back-footer">
-    <div class="up-triangle"></div>
-</footer>
-
 </body>
 
 </html>

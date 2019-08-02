@@ -1,9 +1,10 @@
 package com.parcka.ustersales.service;
 
 import com.parcka.ustersales.model.Trip;
-
 import com.parcka.ustersales.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,11 @@ public class TripService {
     public List<Trip> getAll() {
         return tripRepository.findAll();
     }
+
+    public Page<Trip> getAll(int page, int size) {
+        return tripRepository.findAll(PageRequest.of(page, size));
+    }
+
 
     public Optional<Trip> findByID(Long id) {
         return tripRepository.findById(id);

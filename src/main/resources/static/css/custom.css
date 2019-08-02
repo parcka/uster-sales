@@ -3,6 +3,11 @@
     margin-right: 1.5rem;
 }
 
+/*.btn-outline-secondary{*/
+    /*background-color: hsla(0, 0%, 0%, 0.0) !important;*/
+    /*border-radius: .375rem !important;*/
+/*}*/
+
 .main-message{
     display: flex;
     justify-content: center;

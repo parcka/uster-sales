@@ -3,6 +3,8 @@ package com.parcka.ustersales.service;
 import com.parcka.ustersales.model.Driver;
 import com.parcka.ustersales.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -25,6 +27,9 @@ public class DriverService {
         return driverRepository.findAll();
     }
 
+    public Page<Driver> getAll(int page, int size) {
+        return driverRepository.findAll(PageRequest.of(page, size));
+    }
 
     public List<Driver> saveBulk(List<Driver> driver) {
         List<Driver> drivers = driverRepository.saveAll(driver);

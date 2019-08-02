@@ -4,9 +4,14 @@ import com.parcka.ustersales.model.Driver;
 import com.parcka.ustersales.service.DriverService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @Slf4j
@@ -24,15 +29,30 @@ public class DriverController {
     @GetMapping("/listDriver")
     public String getListDriver(Model model, @RequestParam(defaultValue = "0") int page) {
 
-        model.addAttribute("dataDriver", driverService.getAll());
+
+        int size = 5; //default page size is 5
+
+        Page<Driver> vehiclePage = driverService.getAll(page, size);
+        int totalPages = vehiclePage.getTotalPages();
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+
+        model.addAttribute("dataDriver", vehiclePage);
         return LIST_DRIVER;
     }
 
     @PostMapping("/saveDriver")
 //    @ModelAttribute(value = "Driver")
-    public String saveDriver(Driver Driver) {
-        log.info("Saving Driver: {}", Driver);
-        driverService.save(Driver);
+    public String saveDriver(Driver driver) {
+        licenseToUperCase(driver);
+        log.info("Saving Driver: {}", driver);
+        driverService.save(driver);
         return REDIRECT_LIST_DRIVER;
     }
 
@@ -64,6 +84,11 @@ public class DriverController {
 
                 .build();
 
+    }
+
+    private void licenseToUperCase(Driver driver) {
+        char license = Character.toUpperCase(driver.getLicense());
+        driver.setLicense(license);
     }
 
 }
