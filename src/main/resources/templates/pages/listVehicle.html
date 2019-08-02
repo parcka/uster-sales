@@ -6,7 +6,7 @@
 <head th:replace="fragments/html-header :: html-header"></head>
 <body>
 
-
+<div class="container-fluid">
     <header class="back-header">
         <div class="down-triangle"></div>
     </header>
@@ -26,12 +26,11 @@
 
                     <!--List-->
 
-                    <div>
 
-
-                        <button class="btn btn-success nBtn m-4">Create New Vehicle</button>
-                        <div class="card">
-                            <div class="card-block">
+                    <button class="btn btn-success nBtn m-4">Create New Vehicle</button>
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="custom-form">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -39,6 +38,7 @@
                                         <th>Model</th>
                                         <th>Plate</th>
                                         <th>License Required</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -62,30 +62,29 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <hr/>
-
-
-                                <nav aria-label="Page navigation example" th:if="${dataVehicle.totalPages > 0}">
-                                    <ul class="pagination justify-content-center">
-
-                                        <li th:each="pageNumber : ${pageNumbers}"
-                                            th:class="${pageNumber==dataVehicle.number + 1} ? 'page-item active' : 'page-item' ">
-                                            <!--<a class="page-link" href="#">1</a>-->
-                                            <a th:href="@{/vehicles/listVehicle(page=${pageNumber-1})}"
-                                               th:text=${pageNumber}
-                                               class="page-link"></a>
-                                        </li>
-
-
-                                    </ul>
-                                </nav>
-
-
                             </div>
+                            <hr/>
+
+
+                            <nav aria-label="Page navigation example" th:if="${dataVehicle.totalPages > 0}">
+                                <ul class="pagination justify-content-center">
+
+                                    <li th:each="pageNumber : ${pageNumbers}"
+                                        th:class="${pageNumber==dataVehicle.number + 1} ? 'page-item active' : 'page-item' ">
+                                        <!--<a class="page-link" href="#">1</a>-->
+                                        <a th:href="@{/vehicles/listVehicle(page=${pageNumber-1})}"
+                                           th:text=${pageNumber}
+                                           class="page-link"></a>
+                                    </li>
+
+
+                                </ul>
+                            </nav>
+
+
                         </div>
-
-
                     </div>
+
 
                     <!--List-->
 
@@ -195,6 +194,6 @@
     <footer class="back-footer">
         <div class="up-triangle"></div>
     </footer>
-
+</div>
 </body>
 </html>

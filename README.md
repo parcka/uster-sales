@@ -1,12 +1,13 @@
 # uster-sales
 
-##Stack Tecnologico
+## Stack Tecnologico
 
 * Spring Boot
 * Spring Data
 * Lombok
 * H2 BD en memoria
 * Thymeleaf
+* Bootstrap
 * Jquery
 
 

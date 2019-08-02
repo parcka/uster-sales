@@ -6,8 +6,7 @@
 <head th:replace="fragments/html-header :: html-header"></head>
 <body>
 
-
-
+<div class="container-fluid">
     <header class="back-header">
         <div class="down-triangle"></div>
     </header>
@@ -32,32 +31,34 @@
                         <button class="btn btn-success nBtnDriver m-4">Create New Driver</button>
                         <div class="card">
                             <div class="card-block">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>SurName</th>
-                                        <th>License</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                                <div class="custom-form">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>SurName</th>
+                                            <th>License</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    <tr th:each="driver : ${dataDriver}">
+                                        <tr th:each="driver : ${dataDriver}">
 
 
-                                        <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
-                                        <td th:text="${driver.name}"></td>
-                                        <td th:text="${driver.surname}"></td>
-                                        <td th:text="${driver.license}"></td>
-                                        <td>
-                                            <a class="btn btn-danger delBtn" th:method="delete"
-                                               th:href="@{/drivers/delete/(id=${driver.id})}">Delete</a>
-                                            <a class="btn btn-primary eBtnDriver"
-                                               th:href="@{/drivers/findOne/(id=${driver.id})}">Edit</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                            <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
+                                            <td th:text="${driver.name}"></td>
+                                            <td th:text="${driver.surname}"></td>
+                                            <td th:text="${driver.license}"></td>
+                                            <td>
+                                                <a class="btn btn-danger delBtn" th:method="delete"
+                                                   th:href="@{/drivers/delete/(id=${driver.id})}">Delete</a>
+                                                <a class="btn btn-primary eBtnDriver"
+                                                   th:href="@{/drivers/findOne/(id=${driver.id})}">Edit</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <hr/>
 
                                 <nav aria-label="Page navigation example" th:if="${dataDriver.totalPages > 0}">
@@ -186,6 +187,7 @@
     <footer class="back-footer">
         <div class="up-triangle"></div>
     </footer>
+</div>
 
 </body>
 </html>

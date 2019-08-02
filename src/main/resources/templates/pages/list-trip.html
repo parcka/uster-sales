@@ -5,8 +5,7 @@
 
 <head th:replace="fragments/html-header :: html-header"></head>
 <body>
-
-
+<div class="container-fluid">
 
     <header class="back-header">
         <div class="down-triangle"></div>
@@ -31,37 +30,39 @@
 
                         <div class="card mt-6">
                             <div class="card-block">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Brand Vehicle</th>
-                                        <th>Plate</th>
-                                        <th>license Required</th>
-                                        <th>Driver Name</th>
-                                        <th>Driver Surname</th>
-                                        <th>Date</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                                <div class="custom-form">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Brand Vehicle</th>
+                                            <th>Plate</th>
+                                            <th>license Required</th>
+                                            <th>Driver Name</th>
+                                            <th>Driver Surname</th>
+                                            <th>Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    <tr th:each="trip : ${dataTrip}">
+                                        <tr th:each="trip : ${dataTrip}">
 
 
-                                        <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
-                                        <td th:text="${trip.vehicle.brand}"></td>
-                                        <td th:text="${trip.vehicle.plate}"></td>
-                                        <td th:text="${trip.vehicle.licenseRequired}"></td>
-                                        <td th:text="${trip.driver.name}"></td>
-                                        <td th:text="${trip.driver.surname}"></td>
-                                        <td th:text="${trip.date}"></td>
-                                        <td>
-                                            <a class="btn btn-danger delBtn" th:method="delete"
-                                               th:href="@{/trips/delete/(id=${trip.id})}">Delete</a>
+                                            <!--/*@thymesVar id="brand" type="java.lang.String"*/-->
+                                            <td th:text="${trip.vehicle.brand}"></td>
+                                            <td th:text="${trip.vehicle.plate}"></td>
+                                            <td th:text="${trip.vehicle.licenseRequired}"></td>
+                                            <td th:text="${trip.driver.name}"></td>
+                                            <td th:text="${trip.driver.surname}"></td>
+                                            <td th:text="${trip.date}"></td>
+                                            <td>
+                                                <a class="btn btn-danger delBtn" th:method="delete"
+                                                   th:href="@{/trips/delete/(id=${trip.id})}">Delete</a>
 
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <hr/>
 
 
@@ -137,6 +138,6 @@
     <footer class="back-footer">
         <div class="up-triangle"></div>
     </footer>
-
+</div>
 </body>
 </html>
