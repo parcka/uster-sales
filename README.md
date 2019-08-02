@@ -14,3 +14,7 @@
 ## Funciones para Test
 
 El boton populate DB crea registros en vehiculos y driver de manera que se puedan crear viajes de namera mas rapida
+
+## Para compilar en ide
+
+Para compilar en el ide se debe descargar el plugin de **LOMBOK** correspondiente al ide
