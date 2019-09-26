@@ -18,3 +18,8 @@ El boton populate DB crea registros en vehiculos y driver de manera que se pueda
 ## Para compilar en ide
 
 Para compilar en el ide se debe descargar el plugin de **LOMBOK** correspondiente al ide
+
+## TO-DO
+
+Mostrar la seleccion de drivers al momento de hacer un trip con cards
+
